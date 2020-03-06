@@ -1,0 +1,2 @@
+/* Criação do Banco */
+CREATE SCHEMA `contron` DEFAULT CHARACTER SET utf8mb4 ;

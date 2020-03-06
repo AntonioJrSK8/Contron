@@ -1,0 +1,16 @@
+td.check-circle {
+    background: url('../imagem/check-circle.svg') no-repeat center center;
+    cursor: pointer;
+}
+td.view {
+    background: url('../imagem/view.svg') no-repeat center center;
+    cursor: pointer;
+}
+td.delete {
+    background: url('../imagem/delete.svg') no-repeat center center;
+    cursor: pointer;
+}
+td.edit {
+    background: url('../imagem/edit.svg') no-repeat center center;
+    cursor: pointer;
+}
