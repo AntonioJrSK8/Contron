@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" href="../../../../favicon.ico">
 
-    <title>Contron</title>
+    <title>Contron @yield('titulo')</title>
 
     <!-- Custom styles for this template -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
