@@ -9,8 +9,8 @@ class RolController extends Controller
 {
     public function index()
     {
-        $data = Rol::orderBy('id')->get();
-        return view('rol.index', compact('data'));
+        $datas = Rol::orderBy('id')->get();
+        return view('rol.index', compact('datas'));
     }
 
     public function create()

@@ -11,10 +11,10 @@ Roles
         @include('includes.mensaje')
         <div class="box">
             <div class="box-header with-border">
-                <h3 class="box-title">Roles</h3>
+                <h3 class="box-title">Papéis e Responsabilidades</h3>
                 <div class="box-tools pull-right">
-                    <a href="{{route('crear_rol')}}" class="btn btn-block btn-success btn-sm">
-                        <i class="fa fa-fw fa-plus-circle"></i> Nuevo registro
+                    <a href="{{route('rol.create')}}" class="btn btn-block btn-success btn-sm">
+                        <i class="fa fa-fw fa-plus-circle"></i> Novo registro
                     </a>
                 </div>
             </div>
@@ -22,20 +22,20 @@ Roles
                 <table class="table table-striped table-bordered table-hover" id="tabla-data">
                     <thead>
                         <tr>
-                            <th>Nombre</th>
+                            <th>Nome</th>
                             <th class="width70"></th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($datas as $data)
                         <tr>
-                            <td>{{$data->nombre}}</td>
+                            <td>{{$data->nome}}</td>
                             <td>
-                                <a href="{{route('editar_rol', ['id' => $data->id])}}"
+                                <a href="{{route('rol.edit', ['id' => $data->id])}}"
                                     class="btn-accion-tabla tooltipsC" title="Editar este registro">
                                     <i class="fa fa-fw fa-pencil"></i>
                                 </a>
-                                <form action="{{route('eliminar_rol', ['id' => $data->id])}}"
+                                <form action="{{route('rol.destroy', ['id' => $data->id])}}"
                                     class="d-inline form-eliminar" method="POST">
                                     @csrf @method("delete")
                                     <button type="submit" class="btn-accion-tabla eliminar tooltipsC"
