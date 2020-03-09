@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\api;
 
+use App\apiErro\apiErro;
 use App\Empresa;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -29,6 +30,16 @@ class EmpresaController extends Controller
 
     public function store(Request $request)
     {
-        dd($request->all());
+        try {
+            $empresaData = $request->all();
+            $this->empresa->create($empresaData);
+            return response()->json(['mensagem' => 'Empresa criada com sucesso!', 201]);
+        } catch (\Exception $e) {
+            if(config('app.degug')){
+
+                return response()->json(apiErro::ErroMensagem($e->getMessage(), 1010));
+            }
+        }
+
     }
 }
