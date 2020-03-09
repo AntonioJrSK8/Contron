@@ -22,9 +22,12 @@ class EmpresaController extends Controller
         return \DataTables::of($data)->make();
     }
 
-    public function show(Empresa $id)
+    public function show($id)
     {
-        $data = ['data'=>$id];
+        $data = $this->empresa->find($id);
+
+        if(!$data) return response()->json(apiErro::ErroMensagem('Não localizado!', 4040),401);
+
         return $data;
     }
 
@@ -40,7 +43,7 @@ class EmpresaController extends Controller
 
                 return response()->json(apiErro::ErroMensagem($e->getMessage(), 1010));
             }
-            return response()->json(apiErro::ErroMensagem("Erro de gravação", 1011));
+            return response()->json(apiErro::ErroMensagem("Erro de gravação", 1010));
         }
     }
 
@@ -57,9 +60,24 @@ class EmpresaController extends Controller
         } catch (\Exception $e) {
             if (config('app.degug')) {
 
-                return response()->json(apiErro::ErroMensagem($e->getMessage(), 1010));
+                return response()->json(apiErro::ErroMensagem($e->getMessage(), 1011));
             }
-            return response()->json(apiErro::ErroMensagem("Erro de gravação", 1011));
+            return response()->json(apiErro::ErroMensagem("Erro de atualização", 1011));
+        }
+    }
+
+    public function destroy(Empresa $id)
+    {
+        try {
+            $id->remove();
+            return response()->json(['data'=>['mensagem'=>'Empresa: '.$id->nome.' Removido com sucesso!']], 200);
+
+        } catch (\Excepetion $e) {
+            if (config('app.degug')) {
+
+                return response()->json(apiErro::ErroMensagem($e->getMessage(), 1012));
+            }
+            return response()->json(apiErro::ErroMensagem("Erro de deletar", 1012));
         }
     }
 }

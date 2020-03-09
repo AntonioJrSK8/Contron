@@ -24,6 +24,8 @@ Route::namespace('api')->name('api.')->group(function(){
         Route::post('/', 'EmpresaController@store')->name('empresa.store');
         Route::get('/{id}', 'EmpresaController@show')->name('empresa.show');
         Route::put('/{id}', 'EmpresaController@update')->name('empresa.update');
+        Route::delete('/{id}', 'EmpresaController@destroy')->name('empresa.destroy');
+
     });
 
     Route::prefix('centrocusto')->group(function(){
