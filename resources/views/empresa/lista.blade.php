@@ -104,7 +104,7 @@
                 //"scrollY": "200px",
                 paging: true,
                 search: false,
-                ajax: '{{ url("api/getEmpresa") }}',
+                ajax: '{{ url("api/empresa") }}',
                 "columnDefs": [
                     {
                         "render": function ( data, type, row ) {

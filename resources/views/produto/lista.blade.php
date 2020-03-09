@@ -86,7 +86,7 @@
                 //"scrollY": "200px",
                 paging: true,
                 search: false,
-                ajax: '{{ url("api/getProduto") }}',
+                ajax: '{{ url("api/produto") }}',
                 "columnDefs": [
                     {
                         "render": function ( data, type, row ) {

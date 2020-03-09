@@ -98,7 +98,7 @@
                 //"scrollY": "200px",
                 paging: true,
                 search: false,
-                ajax: '{{ url("/cliente/getClienteData") }}',
+                ajax: '{{ url("api/cliente") }}',
                 "columnDefs": [
                     {
                         "render": function ( data, type, row ) {

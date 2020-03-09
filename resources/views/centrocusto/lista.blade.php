@@ -101,7 +101,7 @@
                 //"scrollY": "200px",
                 paging: true,
                 search: false,
-                ajax: '{{ url("/centrodecusto/getCentroCustoData") }}',
+                ajax: '{{ url("api/centrocusto") }}',
                 "columnDefs": [
                     {
                         "render": function ( data, type, row ) {
