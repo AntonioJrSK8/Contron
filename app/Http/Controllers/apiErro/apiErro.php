@@ -4,7 +4,7 @@ namespace App\apiErro;
 
 class apiErro {
 
-    public static function apiErro($mensagem, $code)
+    public static function ErroMensagem($mensagem, $code)
     {
         return [
             'msg' => $mensagem,
