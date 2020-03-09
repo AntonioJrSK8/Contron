@@ -8,9 +8,17 @@ use Illuminate\Http\Request;
 
 class CentroCustoController extends Controller
 {
+    private $centroCusto;
+
+    public function __construct(CentroCusto $centroCusto)
+    {
+        $this->centroCusto = $centroCusto;
+    }
+
     public function index()
     {
-        $data = CentroCusto::select(['id', 'descricao']);
+        $data = $this->centroCusto::select(['id', 'descricao']);
         return \DataTables::of($data)->make();
     }
+
 }
