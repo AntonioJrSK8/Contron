@@ -18,6 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::namespace('api')->name('api.')->group(function(){
+
     Route::prefix('empresa')->group(function(){
         Route::get('/', 'EmpresaController@index')->name('empresa');
     });
