@@ -21,4 +21,9 @@ class CentroCustoController extends Controller
         return \DataTables::of($data)->make();
     }
 
+    public function show(CentroCusto $id)
+    {
+        $data = ['data' => $id];
+        return $data;
+    }
 }

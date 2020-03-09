@@ -18,8 +18,15 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::namespace('api')->name('api.')->group(function(){
-    Route::get('/empresa', 'EmpresaController@index')->name('empresa');
-    Route::get('/centrocusto', 'CentroCustoController@index')->name('centrocusto');
+    Route::prefix('empresa')->group(function(){
+        Route::get('/', 'EmpresaController@index')->name('empresa');
+    });
+
+    Route::prefix('centrocusto')->group(function(){
+        Route::get('/', 'CentroCustoController@index')->name('centrocusto');
+        Route::get('/{id}', 'CentroCustoController@show')->name('single_centrocusto');
+    });
+
     Route::get('/cliente','ClienteController@index')->name('cliente');
     Route::get('/produto','ProdutoController@index')->name('produto');
 });
