@@ -21,11 +21,13 @@ Route::namespace('api')->name('api.')->group(function(){
 
     Route::prefix('empresa')->group(function(){
         Route::get('/', 'EmpresaController@index')->name('empresa');
+        Route::post('/', 'EmpresaController@store')->name('empresa.store');
+        Route::get('/{id}', 'EmpresaController@show')->name('empresa.show');
     });
 
     Route::prefix('centrocusto')->group(function(){
         Route::get('/', 'CentroCustoController@index')->name('centrocusto');
-        Route::get('/{id}', 'CentroCustoController@show')->name('single_centrocusto');
+        Route::get('/{id}', 'CentroCustoController@show')->name('centrocusto.show');
     });
 
     Route::get('/cliente','ClienteController@index')->name('cliente');
