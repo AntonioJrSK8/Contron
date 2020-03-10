@@ -11,8 +11,6 @@ try {
     window.$ = window.jQuery = require('jquery');
 
     require('bootstrap');
-    $('.dropdown-toggle').dropdown();
-
 } catch (e) {}
 
 /**

@@ -55,3 +55,7 @@ Route::middleware(['auth'])->group(function () {
 //Route::post('pessoas/store', 'PessoasController@store');   // salvar novo registro
 //Route::post('pessoas/update', 'PessoasController@update'); // atualizar registro
 //Route::post('pessoas/delete', 'PessoasController@delete'); // excluir registro
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -26,3 +26,4 @@ mix
     ],
     "public/js/app.js"
   );
+
