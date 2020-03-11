@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pessoa extends Model
 {
+    protected $table = 'pessoas';
+
     const TYPE_INDIVIDUAL = 'individual';
 
     const TYPE_LEGAL = 'legal';

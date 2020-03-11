@@ -14,7 +14,7 @@ class PessoaRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,8 +24,8 @@ class PessoaRequest extends FormRequest
      */
     public function rules()
     {
-        $pessoaType = Pessoa::getPessoaType($this->pessoa_tipo);
-        $documentNumberType = $pessoaType == Pessoa::TYPE_INDIVIDUAL ? 'cpf' : 'cnpj';
+        $pessoa_tipo = Pessoa::getPessoaType($this->pessoa_tipo);
+        $documentNumberType = $pessoa_tipo == Pessoa::TYPE_INDIVIDUAL ? 'cpf' : 'cnpj';
         $pessoa = $this->route('pessoa');
         $pessoaId = $pessoa instanceof pessoa ? $pessoa->id : null;
 
@@ -49,6 +49,6 @@ class PessoaRequest extends FormRequest
             'empresa_nome' => 'required|max:255'
         ];
 
-        return $pessoaType == pessoa::TYPE_INDIVIDUAL ? $rules + $rulesIndividual : $rules + $rulesLegal;
+        return $pessoa_tipo == pessoa::TYPE_INDIVIDUAL ? $rules + $rulesIndividual : $rules + $rulesLegal;
     }
 }
