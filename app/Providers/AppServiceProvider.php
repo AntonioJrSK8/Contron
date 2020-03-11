@@ -25,6 +25,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        /* validação de documento verificação de */
+        \Validator::extend('documento_numero', function ($attribute, $value, $parameters, $validator) {
+            $documentValidator = $parameters[0] == 'cpf' ? new Cpf() : new Cnpj();
+            return $documentValidator->isValid($value);
+        });
     }
 }
