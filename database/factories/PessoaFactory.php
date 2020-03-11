@@ -16,7 +16,7 @@ $factory->define(Pessoa::class, function (Faker $faker) {
 
 $factory->state(Pessoa::class, App\Pessoa::TYPE_INDIVIDUAL, function(Faker $faker){
 
-    $faker->addProvider(new JansenFelipe\FakerBR\FakerBR($faker));
+    //$faker->addProvider(new JansenFelipe\FakerBR\FakerBR($faker));
 
     return [
         'data_nascimento' => $faker->date,
@@ -30,7 +30,7 @@ $factory->state(Pessoa::class, App\Pessoa::TYPE_INDIVIDUAL, function(Faker $fake
 
 $factory->state(Pessoa::class, App\Pessoa::TYPE_LEGAL, function(Faker $faker){
 
-    $faker->addProvider(new JansenFelipe\FakerBR\FakerBR($faker));
+    //$faker->addProvider(new JansenFelipe\FakerBR\FakerBR($faker));
 
     return [
         'empresa_nome' => $faker->company,
