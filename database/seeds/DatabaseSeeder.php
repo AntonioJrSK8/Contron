@@ -1,6 +1,5 @@
 <?php
 
-use App\PerfilMenu;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -25,6 +24,8 @@ class DatabaseSeeder extends Seeder
         //$this->call(PerfilMenuSeeder::class);
 
         $this->call(ClientesTableSeeder::class);
+
+        $this->call(PessoaTableSeeder::class);
 
     }
 }
