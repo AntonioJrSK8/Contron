@@ -1,8 +1,11 @@
 @extends('layouts.dashboard')
 
 @section('content')
-<h3>Listagem de pessoas</h3>
-<br /><br />
+
+<h3>Listagem de pessoas - {{ Session::get('chave') }} </h3>
+<br/><br/>
+@include('includes.mensagem')
+</br>
 <a class="btn btn-default" href="{{ route('pessoas.create') }}">Criar novo</a>
 <table class="table table-striped">
     <thead>

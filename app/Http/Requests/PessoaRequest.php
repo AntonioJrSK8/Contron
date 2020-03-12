@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Pessoa;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
 
 class PessoaRequest extends FormRequest
@@ -14,7 +15,7 @@ class PessoaRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return Auth::user();
     }
 
     /**
@@ -31,7 +32,8 @@ class PessoaRequest extends FormRequest
 
         $rules = [
             'nome' => 'required|max:255',
-            'documento_numero' => "required|unique:pessoas,documento_numero,$pessoaId|documento_numero:$documentNumberType",
+            //'documento_numero' => "required|unique:pessoas,documento_numero,$pessoaId|documento_numero:$documentNumberType",
+            'documento_numero' => "required|unique:pessoas,documento_numero,$pessoaId",
             'email' => 'required|email',
             'fone' => 'required',
         ];

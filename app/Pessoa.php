@@ -48,6 +48,19 @@ class Pessoa extends Model
         return $this->pessoa_tipo == self::TYPE_INDIVIDUAL ? (new \DateTime($this->data_nascimento))->format('d/m/Y') : "";
     }
 
+    public function getDocumentoNumeroFormattedAttribute()
+    {
+        $document = $this->documento_numero;
+        if (!empty($document)) {
+            if (strlen($document) == 11) {
+                $document = preg_replace('/(\d{3})(\d{3})(\d{3})(\d{2})/', '$1.$2.$3-$4', $document);
+            } elseif (strlen($document) == 14) {
+                $document = preg_replace('/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/', '$1.$2.$3/$4-$5', $document);
+            }
+        }
+        return $document;
+    }
+
     public function setDocumentoNumeroFormattedAttribute($value)
     {
         $this->attributes['documento_numero'] = preg_replace('/[^0-9]/', '', $value);

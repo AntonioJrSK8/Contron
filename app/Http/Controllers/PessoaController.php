@@ -9,7 +9,7 @@ class PessoaController extends Controller
 {
     public function index()
     {
-        //\Session::flash('chave', 'valor');
+        \Session::flash('chave', 'valor da Chave da session');
         $pessoas = Pessoa::paginate(50);
         return view('pessoa.index', compact('pessoas'));
     }
@@ -38,8 +38,8 @@ class PessoaController extends Controller
         $data['defaulter'] = $request->has('defaulter');
         $pessoa->fill($data);
         $pessoa->save();
-        //\Session::flash('message','pessoa alterado com sucesso');
+        //\Session::flash('mensagem','pessoa alterado com sucesso');
         return redirect()->route('pessoas.index')
-            ->with('message', 'pessoae alterado com sucesso');
+            ->with('mensagem', 'pessoae alterado com sucesso');
     }
 }

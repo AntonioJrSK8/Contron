@@ -59,7 +59,7 @@
         </tr>
         <tr>
             <th scope="row">Def. Física</th>
-            <td>{{$pessoa->physical_disability}}</td>
+            <td>{{$pessoa->def_fisica}}</td>
         </tr>
         <tr>
             <th scope="row">Inadimplente</th>

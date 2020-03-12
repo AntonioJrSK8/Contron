@@ -23,7 +23,11 @@
 @endcomponent
 
 @if($pessoa_tipo == \App\Pessoa::TYPE_INDIVIDUAL)
+    @php
+        $status_civil = $pessoa->status_civil;
+    @endphp
     @component('includes._form_group',['field' => 'status_civil'])
+
         {{ Form::label('status_civil', 'Estado Civil',['class' => 'control-label']) }}
         {{
             Form::select('status_civil', [
@@ -31,13 +35,15 @@
                 1 => 'Solteiro',
                 2 => 'Casado',
                 3 => 'Divorciado'
-           ], null, ['class' => 'form-control'])
+           ], old('status_civil', $status_civil ?? ''),
+           ['class' => 'form-control'])
         }}
+
     @endcomponent
 
     @component('includes._form_group',['field' => 'data_nascimento'])
         {{ Form::label('data_nascimento', 'Data Nasc.',['class' => 'control-label']) }}
-        {{ Form::date('data_nascimento', null,['class' => 'form-control'])}}
+        {{ Form::date('data_nascimento', old('data_nascimento', $pessoa->data_nascimento ?? ''),['class' => 'form-control'])}}
     @endcomponent
 
     @php
@@ -45,13 +51,13 @@
     @endphp
     <div class="radio{{$errors->has('sexo')?' has-error':''}}">
         <label>
-            {{ Form::radio('sexo','m') }} Masculino
+            {{ Form::radio('sexo','m', old('sexo', $sexo) == 'm' ) }} Masculino
         </label>
     </div>
 
     <div class="radio{{$errors->has('sexo')?' has-error':''}}">
         <label>
-            {{ Form::radio('sexo','f') }} Feminino
+            {{ Form::radio('sexo','f', old('sexo', $sexo) == 'f') }} Feminino
         </label>
     </div>
 
@@ -67,11 +73,11 @@
 @else
     @component('includes._form_group',['field' => 'empresa_nome'])
         {{ Form::label('empresa_nome','Nome Fantasia',['class' => 'control-label']) }}
-        {{ Form::text('empresa_nome',null,['class' => 'form-control']) }}
+        {{ Form::text('empresa_nome', old('empresa_nome', $pessoa->empresa_nome ?? '') ,['class' => 'form-control']) }}
     @endcomponent
 @endif
 <div class="checkbox">
     <label>
-        {{ Form::checkbox('defaulter') }} Inadimplente?
+        {{ Form::checkbox('defaulter', 1, old('defaulter', $pessoa->defaulter)) }} Inadimplente?
     </label>
 </div>
